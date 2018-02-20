@@ -1,6 +1,5 @@
-# Play_python
+# Data Structures 
 
-Welcome to Python 
+using c 
 
-print("Welcome to python")
-
+linked list , stack , queue and so .
