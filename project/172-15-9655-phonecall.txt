@@ -1,0 +1,131 @@
+#include<stdio.h>
+#include<stdlib.h>
+#define CAPACITY 5
+
+int queue[CAPACITY];
+int font =0, rear =0;
+int flag=0;
+
+void insert()
+{
+    if(rear==CAPACITY)
+    {
+        printf("Line is busy\n");
+    }
+    else
+    {
+        int ele;
+        scanf("%d",&ele);
+        queue[rear]=ele;
+        rear++;
+    }
+}
+void receive_call()
+{
+    flag++;
+    printf("0%d call is recived\n",queue[font]);
+}
+void current_call()
+{
+    if(flag==0)
+    {
+        printf("No current call\n");
+    }
+    else
+    {
+        printf("0%d call in line\n",queue[font]);
+    }
+}
+void delete_ele()
+{
+    if(font==rear)
+    {
+        printf("No call in line\n");
+    }
+    else
+    {
+        int i;
+        if(flag==1)
+        {
+        printf("released number is %d\n",queue[font]);
+        for(i=0; i<rear-1; i++)
+        {
+            queue[i]=queue[i+1];
+        }
+        rear--;
+        flag--;
+        }
+        else
+        {
+            printf("No call in line\n");
+        }
+    }
+}
+void display()
+{
+    if(font==rear)
+    {
+        printf("No call in line\n");
+    }
+    else
+    {
+        int i;
+        if(flag==1)
+        {
+            printf("waiting calls are:\n");
+            for(i=font+1; i<rear; i++)
+            {
+                printf("0%d\n",queue[i]);
+            }
+        }
+        else
+        {
+           printf("waiting calls are:\n");
+            for(i=font; i<rear; i++)
+            {
+                printf("0%d\n",queue[i]);
+            }
+        }
+    }
+}
+int main()
+{
+    int choice;
+    while(1)
+    {
+        printf("1.Insert_call\n");
+        printf("2.Recieve_call\n");
+        printf("3.Release call\n");
+        printf("4.Waiting numbers\n");
+        printf("5.Check current number\n");
+        printf("6.Exit\n");
+        printf("Enter your choice:");
+        scanf("%d",&choice);
+
+        switch(choice)
+        {
+        case 1:
+            insert();
+            break;
+        case 2:
+            receive_call();
+            break;
+        case 3:
+            delete_ele();
+            break;
+        case 4:
+            display();
+            break;
+        case 5:
+            current_call();
+            break;
+        case 6:
+            exit(0);
+        default:
+            printf("Invalid input\n");
+        }
+    }
+}
+
+
+
