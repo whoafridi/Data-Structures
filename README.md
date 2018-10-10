@@ -2,4 +2,4 @@
 
 using c 
 
-linked list , stack , queue and so .
+linked list , stack , queue and so . [ only for class ]
